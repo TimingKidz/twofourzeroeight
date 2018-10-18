@@ -15,7 +15,7 @@ namespace twozerofoureight
 
         public TwoZeroFourEightController()
         {
-
+            
         }
 
         public override void ActionPerformed(int action)

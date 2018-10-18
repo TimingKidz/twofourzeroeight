@@ -18,6 +18,9 @@ namespace twozerofoureight
         public TwoZeroFourEightView()
         {
             InitializeComponent();
+            TextBox Text = new TextBox();
+            this.Controls.Add(Text);
+            Text.KeyDown += new KeyEventHandler(btn_KeyDown);
             model = new TwoZeroFourEightModel();
             model.AttachObserver(this);
             controller = new TwoZeroFourEightController();
@@ -27,7 +30,14 @@ namespace twozerofoureight
 
         public void Notify(Model m)
         {
+            label1.Text = Convert.ToString(((TwoZeroFourEightModel)m).Sum());
             UpdateBoard(((TwoZeroFourEightModel) m).GetBoard());
+            if (!(((TwoZeroFourEightModel)m).isFull()))
+            {
+                MessageBox.Show(" GAME OVER \n  Score " + ((TwoZeroFourEightModel)m).Sum() + " !!!", "GAMEOVER!!!!");
+                UpdateBoard(((TwoZeroFourEightModel)m).GetBoard());
+                label1.Text = Convert.ToString(((TwoZeroFourEightModel)m).Sum());
+            }
         }
 
         private void UpdateTile(Label l, int i)
@@ -97,5 +107,25 @@ namespace twozerofoureight
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
         }
 
+        private void btn_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Down:
+                    controller.ActionPerformed(TwoZeroFourEightController.DOWN);
+                    break;
+                case Keys.Right:
+                    controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
+                    break;
+                case Keys.Up:
+                    controller.ActionPerformed(TwoZeroFourEightController.UP);
+                    break;
+                case Keys.Left:
+                    controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

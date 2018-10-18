@@ -37,9 +37,37 @@ namespace twozerofoureight
             return board;
         }
 
+        public int Sum()
+        {
+            int score = 0;
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    score += board[i, j];
+                }
+            }
+            return score;
+        }
+
+        public bool isFull()
+        {
+            for(int i = 0; i < boardSize; i++)
+            {
+                for(int j = 0; j < boardSize; j++)
+                {
+                    if(board[i,j] == 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         private int[,] Random(int[,] input)
         {
-            while (true)
+            while (isFull())
             {
                 int x = rand.Next(boardSize);
                 int y = rand.Next(boardSize);
