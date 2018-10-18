@@ -17,10 +17,10 @@ namespace twozerofoureight
        
         public TwoZeroFourEightView()
         {
+            KeyPreview = true;
             InitializeComponent();
             TextBox Text = new TextBox();
             this.Controls.Add(Text);
-            Text.KeyDown += new KeyEventHandler(btn_KeyDown);
             model = new TwoZeroFourEightModel();
             model.AttachObserver(this);
             controller = new TwoZeroFourEightController();
@@ -32,7 +32,7 @@ namespace twozerofoureight
         {
             label1.Text = Convert.ToString(((TwoZeroFourEightModel)m).Sum());
             UpdateBoard(((TwoZeroFourEightModel) m).GetBoard());
-            if (!(((TwoZeroFourEightModel)m).isFull()))
+            if (((TwoZeroFourEightModel)m).isGameOver())
             {
                 MessageBox.Show(" GAME OVER \n  Score " + ((TwoZeroFourEightModel)m).Sum() + " !!!", "GAMEOVER!!!!");
                 UpdateBoard(((TwoZeroFourEightModel)m).GetBoard());
@@ -107,24 +107,31 @@ namespace twozerofoureight
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
         }
 
-        private void btn_KeyDown(object sender, KeyEventArgs e)
+        private void btnX_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            switch (e.KeyCode)
+            if (e.KeyCode == Keys.Left)
             {
-                case Keys.Down:
-                    controller.ActionPerformed(TwoZeroFourEightController.DOWN);
-                    break;
-                case Keys.Right:
-                    controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
-                    break;
-                case Keys.Up:
-                    controller.ActionPerformed(TwoZeroFourEightController.UP);
-                    break;
-                case Keys.Left:
-                    controller.ActionPerformed(TwoZeroFourEightController.LEFT);
-                    break;
-                default:
-                    break;
+                btnLeft.Focus();
+                btnLeft.PerformClick();
+                e.IsInputKey = true;
+            }
+            else if (e.KeyCode == Keys.Right)
+            {
+                btnRight.Focus();
+                btnRight.PerformClick();
+                e.IsInputKey = true;
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                btnDown.Focus();
+                btnDown.PerformClick();
+                e.IsInputKey = true;
+            }
+            else if (e.KeyCode == Keys.Up)
+            {
+                btnUp.Focus();
+                btnUp.PerformClick();
+                e.IsInputKey = true;
             }
         }
     }

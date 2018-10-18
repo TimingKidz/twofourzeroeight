@@ -48,8 +48,8 @@
             this.btnUp = new System.Windows.Forms.Button();
             this.btnRight = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
-            this.ScoreBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl00
@@ -262,7 +262,9 @@
             // 
             // btnLeft
             // 
-            this.btnLeft.Location = new System.Drawing.Point(113, 414);
+            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLeft.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnLeft.Location = new System.Drawing.Point(90, 415);
             this.btnLeft.Margin = new System.Windows.Forms.Padding(4);
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(71, 55);
@@ -270,11 +272,14 @@
             this.btnLeft.Text = "←";
             this.btnLeft.UseVisualStyleBackColor = true;
             this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
-            this.btnLeft.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_KeyDown);
+            this.btnLeft.Enter += new System.EventHandler(this.btnLeft_Click);
+            this.btnLeft.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnX_PreviewKeyDown);
             // 
             // btnUp
             // 
-            this.btnUp.Location = new System.Drawing.Point(187, 378);
+            this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnUp.Location = new System.Drawing.Point(164, 379);
             this.btnUp.Margin = new System.Windows.Forms.Padding(4);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(71, 55);
@@ -282,11 +287,14 @@
             this.btnUp.Text = "↑";
             this.btnUp.UseVisualStyleBackColor = true;
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
-            this.btnUp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_KeyDown);
+            this.btnUp.Enter += new System.EventHandler(this.btnUp_Click);
+            this.btnUp.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnX_PreviewKeyDown);
             // 
             // btnRight
             // 
-            this.btnRight.Location = new System.Drawing.Point(260, 414);
+            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnRight.Location = new System.Drawing.Point(237, 415);
             this.btnRight.Margin = new System.Windows.Forms.Padding(4);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(71, 55);
@@ -294,11 +302,14 @@
             this.btnRight.Text = "→";
             this.btnRight.UseVisualStyleBackColor = true;
             this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
-            this.btnRight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_KeyDown);
+            this.btnRight.Enter += new System.EventHandler(this.btnRight_Click);
+            this.btnRight.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnX_PreviewKeyDown);
             // 
             // btnDown
             // 
-            this.btnDown.Location = new System.Drawing.Point(187, 457);
+            this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDown.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnDown.Location = new System.Drawing.Point(164, 458);
             this.btnDown.Margin = new System.Windows.Forms.Padding(4);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(71, 55);
@@ -306,32 +317,39 @@
             this.btnDown.Text = "↓";
             this.btnDown.UseVisualStyleBackColor = true;
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
-            this.btnDown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_KeyDown);
-            // 
-            // ScoreBox
-            // 
-            this.ScoreBox.Location = new System.Drawing.Point(13, 378);
-            this.ScoreBox.Name = "ScoreBox";
-            this.ScoreBox.Size = new System.Drawing.Size(100, 22);
-            this.ScoreBox.TabIndex = 20;
-            this.ScoreBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_KeyDown);
+            this.btnDown.Enter += new System.EventHandler(this.btnDown_Click);
+            this.btnDown.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnX_PreviewKeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 414);
+            this.label1.Font = new System.Drawing.Font("Berlin Sans FB", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(27, 415);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(21, 19);
             this.label1.TabIndex = 21;
-            this.label1.Text = "label1";
+            this.label1.Text = "N";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Berlin Sans FB", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 395);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 19);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Score";
             // 
             // TwoZeroFourEightView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 527);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.ClientSize = new System.Drawing.Size(400, 527);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ScoreBox);
             this.Controls.Add(this.btnDown);
             this.Controls.Add(this.btnRight);
             this.Controls.Add(this.btnUp);
@@ -355,7 +373,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TwoZeroFourEightView";
             this.Text = "Form1";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btn_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,8 +400,8 @@
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnRight;
         private System.Windows.Forms.Button btnDown;
-        private System.Windows.Forms.TextBox ScoreBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

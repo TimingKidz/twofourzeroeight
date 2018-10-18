@@ -52,22 +52,30 @@ namespace twozerofoureight
 
         public bool isFull()
         {
+            int count = 0;
             for(int i = 0; i < boardSize; i++)
             {
                 for(int j = 0; j < boardSize; j++)
                 {
-                    if(board[i,j] == 0)
+                    if(board[i,j] > 0)
                     {
-                        return true;
+                        count++;
                     }
                 }
             }
-            return false;
+            if(count == 16)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private int[,] Random(int[,] input)
         {
-            while (isFull())
+            while (!isFull())
             {
                 int x = rand.Next(boardSize);
                 int y = rand.Next(boardSize);
@@ -86,7 +94,7 @@ namespace twozerofoureight
             int pos;
             int[] rangeX = Enumerable.Range(0, boardSize).ToArray();
             int[] rangeY = Enumerable.Range(0, boardSize).ToArray();
-            Array.Reverse(rangeY);
+            Array.Reverse(rangeY);            
             foreach (int i in rangeX)
             {
                 pos = 0;
@@ -129,8 +137,12 @@ namespace twozerofoureight
                     board[k, i] = 0;
                 }
             }
-            board = Random(board);
+            board = Random(board);            
             NotifyAll();
+            if (isFull())
+            {
+                isGameOver();
+            }
         }
 
         public void PerformUp()
@@ -138,7 +150,7 @@ namespace twozerofoureight
             int[] buffer;
             int pos;
 
-            int[] range = Enumerable.Range(0, boardSize).ToArray();
+            int[] range = Enumerable.Range(0, boardSize).ToArray();            
             foreach (int i in range)
             {
                 pos = 0;
@@ -183,6 +195,10 @@ namespace twozerofoureight
             }
             board = Random(board);
             NotifyAll();
+            if (isFull())
+            {
+                isGameOver();
+            }            
         }
 
         public void PerformRight()
@@ -192,7 +208,7 @@ namespace twozerofoureight
 
             int[] rangeX = Enumerable.Range(0, boardSize).ToArray();
             int[] rangeY = Enumerable.Range(0, boardSize).ToArray();
-            Array.Reverse(rangeX);
+            Array.Reverse(rangeX);            
             foreach (int i in rangeY)
             {
                 pos = 0;
@@ -235,15 +251,19 @@ namespace twozerofoureight
                     board[i, k] = 0;
                 }
             }
-            board = Random(board);
+            board = Random(board);            
             NotifyAll();
+            if (isFull())
+            {
+                isGameOver();
+            }
         }
 
         public void PerformLeft()
         {
             int[] buffer;
             int pos;
-            int[] range = Enumerable.Range(0, boardSize).ToArray();
+            int[] range = Enumerable.Range(0, boardSize).ToArray();            
             foreach (int i in range)
             {
                 pos = 0;
@@ -285,8 +305,62 @@ namespace twozerofoureight
                     board[i, k] = 0;
                 }
             }
-            board = Random(board);
+            board = Random(board);            
             NotifyAll();
+            if (isFull())
+            {
+                isGameOver();
+            }
+        }
+
+        public Boolean isGameOver()
+        {
+            int count = 0;
+            for (int x = 0; x < boardSize; x++)
+            {
+                for (int y = 0; y < boardSize; y++)
+                {
+                    if (board[x, y] != 0)
+                    {
+                        if (x != 3)
+                        {
+                            if (board[x, y] != board[x + 1, y])
+                            {
+                                count++;
+                            }
+                        }
+                        if (y != 3)
+                        {
+                            if (board[x, y] != board[x, y + 1])
+                            {
+                                count++;
+                            }
+                        }
+                        if (x != 0)
+                        {
+                            if (board[x, y] != board[x - 1, y])
+                            {
+                                count++;
+                            }
+                        }
+                        if (y != 0)
+                        {
+                            if (board[x, y] != board[x, y - 1])
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+            if (count == 48)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
