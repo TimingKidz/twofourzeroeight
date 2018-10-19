@@ -107,7 +107,7 @@ namespace twozerofoureight
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
         }
 
-        private void btnX_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        private void btnK_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
             {

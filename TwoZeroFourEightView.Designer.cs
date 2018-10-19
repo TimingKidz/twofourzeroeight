@@ -273,7 +273,7 @@
             this.btnLeft.UseVisualStyleBackColor = true;
             this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             this.btnLeft.Enter += new System.EventHandler(this.btnLeft_Click);
-            this.btnLeft.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnX_PreviewKeyDown);
+            this.btnLeft.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnK_PreviewKeyDown);
             // 
             // btnUp
             // 
@@ -288,7 +288,7 @@
             this.btnUp.UseVisualStyleBackColor = true;
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             this.btnUp.Enter += new System.EventHandler(this.btnUp_Click);
-            this.btnUp.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnX_PreviewKeyDown);
+            this.btnUp.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnK_PreviewKeyDown);
             // 
             // btnRight
             // 
@@ -303,7 +303,7 @@
             this.btnRight.UseVisualStyleBackColor = true;
             this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             this.btnRight.Enter += new System.EventHandler(this.btnRight_Click);
-            this.btnRight.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnX_PreviewKeyDown);
+            this.btnRight.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnK_PreviewKeyDown);
             // 
             // btnDown
             // 
@@ -318,7 +318,7 @@
             this.btnDown.UseVisualStyleBackColor = true;
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             this.btnDown.Enter += new System.EventHandler(this.btnDown_Click);
-            this.btnDown.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnX_PreviewKeyDown);
+            this.btnDown.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnK_PreviewKeyDown);
             // 
             // label1
             // 
